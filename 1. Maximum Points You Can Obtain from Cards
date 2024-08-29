@@ -1,0 +1,16 @@
+class Solution:
+    def maxScore(self, cardScore, k):
+        #your code goes here
+        lSum=0
+        rSum=0
+        for i in range(k):
+            lSum+=cardScore[i]
+        maxSum = lSum
+        rightIndex = len(cardScore)-1
+        for i in range(k-1,-1,-1):
+            lSum-=cardScore[i]
+            rSum += cardScore[rightIndex]
+            rightIndex-=1
+            #print(rSum)
+            maxSum = max(maxSum,lSum+rSum)
+        return maxSum
