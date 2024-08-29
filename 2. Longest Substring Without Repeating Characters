@@ -1,0 +1,18 @@
+class Solution:
+    def longestNonRepeatingSubstring(self, s):
+        #your code goes here
+        l=0
+        maxi = 0
+        ss = set()
+        for i in range(len(s)):
+            if s[i] not in ss:
+                ss.add(s[i])
+                maxi = max(maxi,i-l+1)
+            else:
+                while s[i] in ss:
+                    ss.remove(s[l])
+                    l+=1
+                ss.add(s[i])
+        return maxi
+
+
